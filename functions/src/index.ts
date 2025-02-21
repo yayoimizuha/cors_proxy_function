@@ -5,7 +5,8 @@ import {initializeApp} from "firebase-admin/app";
 initializeApp();
 
 
-export const serveImage = onRequest({region: ["asia-northeast1"], cors: ["hello-radiko.web.app", "localhost"]}, async (req, res) => {
+// eslint-disable-next-line max-len
+export const serveImage = onRequest({region: ["asia-northeast1"], cors: ["hello-radiko.web.app", "localhost"], memory: "128MiB"}, async (req, res) => {
   // res.set('Access-Control-Allow-Origin', 'mizuha-dev.com');
   // res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST');
   // res.set('Access-Control-Allow-Headers', 'Content-Type');
@@ -25,6 +26,7 @@ export const serveImage = onRequest({region: ["asia-northeast1"], cors: ["hello-
   try {
     const response = await fetch(imageUrl);
     if (!response.ok) {
+      // eslint-disable-next-line max-len
       throw new Error(`Failed to fetch image: ${response.status} ${response.statusText}`);
     }
 
@@ -35,7 +37,7 @@ export const serveImage = onRequest({region: ["asia-northeast1"], cors: ["hello-
 
     const buffer = await response.arrayBuffer();
     res.status(200).send(buffer);
-  } catch (error: any) {
+  } catch (error:any) {
     logger.error(error);
     res.status(500).send(`Error: ${error.message}`);
   }
