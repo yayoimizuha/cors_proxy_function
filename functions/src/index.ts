@@ -6,7 +6,7 @@ initializeApp();
 
 
 // eslint-disable-next-line max-len
-export const serveImage = onRequest({region: ["asia-northeast1"], cors: ["hello-radiko.web.app", "localhost"], memory: "128MiB"}, async (req, res) => {
+export const serveImage = onRequest({region: ["asia-northeast1"], cors: ["https://hello-radiko.web.app", "http://localhost"], memory: "128MiB"}, async (req, res) => {
   // res.set('Access-Control-Allow-Origin', 'mizuha-dev.com');
   // res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST');
   // res.set('Access-Control-Allow-Headers', 'Content-Type');
