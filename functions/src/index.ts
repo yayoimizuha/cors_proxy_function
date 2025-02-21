@@ -35,7 +35,7 @@ export const serveImage = onRequest({region: ["asia-northeast1"], cors: ["https:
       res.set("Content-Type", contentType);
     }
 
-    const buffer = await response.arrayBuffer();
+    const buffer = Buffer.from(await response.arrayBuffer());
     res.status(200).send(buffer);
   } catch (error:any) {
     logger.error(error);
